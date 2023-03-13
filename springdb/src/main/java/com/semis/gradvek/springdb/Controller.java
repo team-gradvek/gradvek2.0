@@ -79,7 +79,8 @@ public class Controller {
 				AdverseEvent,
 				AssociatedWith,
 				MechanismOfAction,
-				Participates
+				Participates,
+				MousePhenotype
 		};
 
 		// Create indexes up front for fast merging
@@ -91,7 +92,9 @@ public class Controller {
 			try {
 				String typeString = type.toString ();
 				int alreadyThere = mDriver.count (type);
+
 				if (alreadyThere <= 0) {
+
 					mLogger.info ("Importing " + typeString + " data");
 					ParquetUtils.initEntities (mEnv, mDriver, type);
 					mDriver.unique (type);
@@ -133,6 +136,7 @@ public class Controller {
 			mLogger.warning ("Could not connect to neo4j database - will use inmem db");
 			mDriver = new TestDBDriver ();
 		}
+
 
 	}
 
