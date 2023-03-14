@@ -1,7 +1,6 @@
 # Troubleshooting Errors
 
-Error:
-Image not compatible with M1 Macs.
+## Error: Image not compatible with M1 Macs.
 ```
 ➜  gradvek2.0 git:(master) docker pull sheelyn/ns_gradvek_test
 Using default tag: latest
@@ -25,16 +24,46 @@ Manifests:
 
 So we have two options now:
 
-1. We run with the platform we need specified.
+1. We run with the platform we need specified (manual)
 ```
 docker pull --platform linux/x86_64 sheelyn/ns_gradvek_test
 ```
 OR
 
-2. We rebuild the image to be cross-platform.
+2. We rebuild the image to be cross-platform (one-time/when we update image)
 
 ```
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t davida26/gradvek2.0:latest --push .
 ```
 
 Note: to get this to publish to DockerHub I had to add the secrets to the repo on Github. Settings > Secrets and Variables > Actions
+
+
+## Error: /node/npm: line 20: /node/node: cannot execute binary file: Exec format error
+
+Running this in debug mode with 
+
+```
+docker-compose logs --follow
+```
+
+shows that `npm` is not installed
+
+So we can modify the Dockerfile to install it
+
+```
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs \
+    npm 
+```
+
+and we finally tell docker-compose.yml to not forget to run the context of Dockerfile aka the build step
+
+```
+    build:
+      context: .
+```
+
+
+
+
