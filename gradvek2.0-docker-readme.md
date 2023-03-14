@@ -36,7 +36,17 @@ OR
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t davida26/gradvek2.0:latest --push .
 ```
 
-Note: to get this to publish to DockerHub I had to add the secrets to the repo on Github. Settings > Secrets and Variables > Actions
+This command was not used however, as I had an existing buildx configuration created. See below for all platforms supported.
+
+```
+Name:      cross-platform-builder0
+Endpoint:  unix:///var/run/docker.sock
+Status:    running
+Buildkit:  v0.11.4
+Platforms: linux/arm64, linux/amd64, linux/amd64/v2, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/mips64le, linux/mips64, linux/arm/v7, linux/arm/v6
+```
+
+@NOTE: to get this to publish to DockerHub I had to add the secrets to the repo on Github. Settings > Secrets and Variables > Actions
 
 
 ## Error: /node/npm: line 20: /node/node: cannot execute binary file: Exec format error
