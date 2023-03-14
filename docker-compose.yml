@@ -14,7 +14,7 @@ services:
       NEO4J_dbms_security_auth__minimum__password__length: 7
 
   gradvek:
-    image: sheelyn/ns_gradvek_test
+    image: davida26/gradvek2.0:latest
     ports:
       - "3000:3000"
       - "8080:8080"
