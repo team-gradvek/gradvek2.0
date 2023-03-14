@@ -1,4 +1,38 @@
-# gradvek
+# gradvek 2.0
+
+GRaph of ADVerse Event Knowledge 2.0
+
+## Make commands
+Building and running can all be done through the following make commands
+
+```make backend``` will test and build the code to run the backend
+
+```make frontend``` will build the code to run the frontend
+
+```make docker``` will build a local docker image with your local changes to both the front and back end
+
+```make run``` will run the gradVek application on your local host with your local gradvek and neo4j image
+
+```make run-deployed``` will run the gradVek application on your local host with the latest published gradvek and neo4j image
+
+```make all``` will build the frontend, backend, create a new local docker image, and run that image with neo4j on your local machine
+
+```make``` the default behaviour is the same as ```make all```
+
+
+## Ports
+when running locally the following ports are used
+
+| Port | Purpose                                                                                |
+|------|----------------------------------------------------------------------------------------|
+| 3000 | The frontend of the application.  Browse to http://localhost:3000 to see the web site. |
+| 8080 | The backend of the application.  Serves requests from the frontend.                    |
+| 7474 | The Neo4j web interface.  Allows inspection of the database through Cypher queries.    |
+| 7687 | The Neo4j bolt interface.  Serves requests from the backend.                           |
+
+---
+
+# gradvek 1.0
 
 GRaph of ADVerse Event Knowledge
 
