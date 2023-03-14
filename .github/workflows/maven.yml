@@ -9,7 +9,7 @@ on:
       NON_MASTER_DEPLOY:
         description: 'Deploy even if this is not on the master branch'
         required: false
-        default: 'FALSE'
+        default: 'true'
 
   push:
    branches: 
@@ -159,7 +159,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ns_gradvek_test:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/da-crossplatform:latest
 
   # deploy:
   #   if: ${{ github.ref == 'refs/heads/master' || github.event.inputs.NON_MASTER_DEPLOY == 'TRUE' }}

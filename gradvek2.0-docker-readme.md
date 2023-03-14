@@ -36,3 +36,5 @@ OR
 ```
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t davida26/gradvek2.0:latest --push .
 ```
+
+Note: to get this to publish to DockerHub I had to add the secrets to the repo on Github. Settings > Secrets and Variables > Actions
