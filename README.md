@@ -27,6 +27,9 @@ Building and running can all be done through the following make commands
 
 ```make``` the default behaviour is the same as ```make local-docker```
 
+## Caution
+Any changes that alter communication with the database, such as passwords, will require deleting the data folder and rebuilding the image.
+
 ## Ports
 when running locally the following ports are used
 
@@ -99,7 +102,7 @@ To run the application using a Neo4j Desktop database, follow the steps below.  
 * Start Neo4j Desktop.
 * Create a new project if you haven't set one up before.  If you have, skip ahead to start the DBMS.
   * Add a local DBMS to the project.
-  * Set the password to `gradvek`.
+  * Set the password to `gradvek1`.
   * In the DBMS settings (click the ... while hovering over the DBMS):
     * Search for the string "non-local connections".
     * Uncomment the next line that reads `dbms.default_listen_address=0.0.0.0`.
