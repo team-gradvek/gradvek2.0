@@ -22,7 +22,7 @@ default: local-docker
 # Build Frontend with npm install in springdb/frontend folder
 build-frontend:
 	$(info Make: Building frontend.)
-	@cd $(FRONTEND_DIR) && $(FRONTEN D_BUILD)
+	@cd $(FRONTEND_DIR) && $(FRONTEND_BUILD)
 
 # Build Backend with maven install in springdb folder
 build-backend:
