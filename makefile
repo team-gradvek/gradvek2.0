@@ -7,6 +7,9 @@ BACKEND_DIR := springdb
 FRONTEND_BUILD := npm install
 BACKEND_BUILD := mvn clean install
 
+FRONTEND_RUN := npm start
+BACKEND_RUN := mvn spring-boot:run
+
 LOCAL_DOCKER_IMAGE_TAG := gradvek/springdb-docker
 
 LOCAL_DOCKER_COMPOSE_FILE := docker-compose-local.yml
@@ -34,19 +37,19 @@ build-docker:
 # Run local gradvek backend on local host
 run-backend:
 	$(info Make: Running local gradvek backend.)
-	@cd $(BACKEND_DIR) && mvn spring-boot:run
+	@cd $(BACKEND_DIR) && (BACKEND_RUN)
 
 # Run local gradvek frontend on local host
 run-frontend:
 	$(info Make: Running local gradvek frontend.)
-	@cd $(FRONTEND_DIR) && npm start
+	@cd $(FRONTEND_DIR) && (FRONTEND_RUN)
 
 # Run local gradvek back and front end together on local host
 run-local:
 	$(info Make: Running local gradvek backend and frontend.)
-	@cd $(BACKEND_DIR) && mvn spring-boot:run &
-	@cd $(FRONTEND_DIR) && npm start
-
+	$(info Make: This requires neo4j running locally.)
+	@cd $(BACKEND_DIR) && (BACKEND_RUN) &
+	@cd $(FRONTEND_DIR) && (FRONTEND_RUN)
 # Run local gradvek through docker on local host
 run-docker:
 	$(info Make: Running docker image.)

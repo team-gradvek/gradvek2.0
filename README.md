@@ -5,20 +5,27 @@ GRaph of ADVerse Event Knowledge 2.0
 ## Make commands
 Building and running can all be done through the following make commands
 
-```make backend``` will test and build the code to run the backend
+```make build-frontend``` will build the code to run the frontend
 
-```make frontend``` will build the code to run the frontend
+```make build-backend``` will test and build the code to run the backend
 
-```make docker``` will build a local docker image with your local changes to both the front and back end
+```make build-docker``` will build a local docker image with your local changes to both the front and back end
 
-```make run``` will run the gradVek application on your local host with your local gradvek and neo4j image
+```make run-backend``` will run the gradVek backend on your local host
 
-```make run-deployed``` will run the gradVek application on your local host with the latest published gradvek and neo4j image
+```make run-frontend``` will run the gradVek frontend on your local host
 
-```make all``` will build the frontend, backend, create a new local docker image, and run that image with neo4j on your local machine
+```make run-local``` will run the gradVek backend and frontend on your local host, requires neo4j to be running locally
 
-```make``` the default behaviour is the same as ```make all```
+```make run-docker``` will run the gradVek application on your local host with your local gradvek and neo4j image
 
+```make run-deployed``` will run the latest published gradVek application on your local host along with a neo4j image
+
+```make local``` will build and run the gradVek backend and frontend on your local host, requires neo4j to be running locally
+
+```make local-docker``` will build and run the gradVek in docker and neo4j image on your local host with local changes
+
+```make``` the default behaviour is the same as ```make local-docker```
 
 ## Ports
 when running locally the following ports are used
