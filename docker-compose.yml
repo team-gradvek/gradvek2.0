@@ -11,6 +11,7 @@ services:
       - "7687:7687"
     environment:
       NEO4J_AUTH: neo4j/gradvek1
+      
   gradvek:
     image: sheelyn/ns_gradvek_test
     ports:
