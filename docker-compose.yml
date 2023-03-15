@@ -10,9 +10,7 @@ services:
       - "7474:7474"
       - "7687:7687"
     environment:
-      NEO4J_AUTH: neo4j/gradvek
-      NEO4J_dbms_security_auth__minimum__password__length: 7
-
+      NEO4J_AUTH: neo4j/gradvek1
   gradvek:
     image: sheelyn/ns_gradvek_test
     ports:
