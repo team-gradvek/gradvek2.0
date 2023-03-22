@@ -17,7 +17,7 @@ public class ParquetTests {
 	
 	@BeforeAll
 	public static void readFile () throws IOException {	
-		Resource r = new ClassPathResource ("targets/part-00000-93626c03-1c1d-49b0-a5d8-9973ee62d900-c000.snappy.parquet");
+		Resource r = new ClassPathResource ("targets/part-00001-7c4d21db-d777-42ee-ae66-67426a0369f1-c000.snappy.parquet");
 		mParquet = ParquetUtils.readResource (r);
 	}
 	
@@ -31,8 +31,8 @@ public class ParquetTests {
 		Group firstEntry = mParquet.getData ().get (0);
 		Map<String, String> params = ParquetUtils.extractParams (firstEntry, "id", "approvedSymbol", "approvedName");
 		
-		Assertions.assertEquals (params.getOrDefault ("id", null), "ENSG00000020219");
-		Assertions.assertEquals (params.getOrDefault ("approvedName", null), "chaperonin containing TCP1 subunit 8 like 1, pseudogene");
+		Assertions.assertEquals (params.getOrDefault ("id", null), "ENSG00000006194");
+		Assertions.assertEquals (params.getOrDefault ("approvedName", null), "zinc finger protein 263");
 	
 		String json = ParquetUtils.paramsAsJSON (params);
 		Assertions.assertTrue (json.contains ("approvedSymbol"));
@@ -43,8 +43,8 @@ public class ParquetTests {
 		Group firstEntry = mParquet.getData ().get (0);
 		List<String> params = ParquetUtils.extractStringList (firstEntry, "transcriptIds");
 		
-		Assertions.assertEquals (params.size (), 1);
-		Assertions.assertEquals (params.get (0), "ENST00000465400");
+		Assertions.assertEquals (params.size (), 7);
+		Assertions.assertEquals (params.get (0), "ENST00000574674");
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class ParquetTests {
 		Group firstEntry = mParquet.getData ().get (0);
 		List<Group> params = ParquetUtils.extractGroupList (firstEntry, "synonyms");
 		
-		Assertions.assertEquals (params.size (), 6);
+		Assertions.assertEquals (params.size (), 16);
 	}
 
 }
