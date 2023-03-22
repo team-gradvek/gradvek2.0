@@ -14,7 +14,7 @@ services:
 
 
   gradvek:
-    image: gradvek/springdb-docker:latest
+    image: sheelyn/da-crossplatform:latest
     ports:
       - "3000:3000"
       - "8080:8080"
