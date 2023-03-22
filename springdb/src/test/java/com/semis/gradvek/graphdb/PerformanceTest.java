@@ -23,7 +23,7 @@ public class PerformanceTest {
     public PerformanceTest() {
         this.env = new MockEnvironment()
                 .withProperty("neo4j.user", "neo4j")
-                .withProperty("neo4j.password", "gradvek")
+                .withProperty("neo4j.password", "gradvek1")
                 .withProperty("NEO4JURL", "bolt://localhost:7687");
         this.driver = Neo4jDriver.instance(this.env);
     }

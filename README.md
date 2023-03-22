@@ -1,4 +1,48 @@
-# gradvek
+# gradvek 2.0
+
+GRaph of ADVerse Event Knowledge 2.0
+
+## Make commands
+Building and running can all be done through the following make commands
+
+```make build-frontend``` will build the code to run the frontend
+
+```make build-backend``` will test and build the code to run the backend
+
+```make build-docker``` will build a local docker image with your local changes to both the front and back end
+
+```make run-backend``` will run the gradVek backend on your local host
+
+```make run-frontend``` will run the gradVek frontend on your local host
+
+```make run-local``` will run the gradVek backend and frontend on your local host, requires neo4j to be running locally
+
+```make run-docker``` will run the gradVek application on your local host with your local gradvek and neo4j image
+
+```make run-deployed``` will run the latest published gradVek application on your local host along with a neo4j image
+
+```make local``` will build and run the gradVek backend and frontend on your local host, requires neo4j to be running locally
+
+```make local-docker``` will build and run the gradVek in docker and neo4j image on your local host with local changes
+
+```make``` the default behaviour is the same as ```make local-docker```
+
+## Caution
+Any changes that alter communication with the database, such as passwords, will require deleting the data folder and rebuilding the image.
+
+## Ports
+when running locally the following ports are used
+
+| Port | Purpose                                                                                |
+|------|----------------------------------------------------------------------------------------|
+| 3000 | The frontend of the application.  Browse to http://localhost:3000 to see the web site. |
+| 8080 | The backend of the application.  Serves requests from the frontend.                    |
+| 7474 | The Neo4j web interface.  Allows inspection of the database through Cypher queries.    |
+| 7687 | The Neo4j bolt interface.  Serves requests from the backend.                           |
+
+---
+
+# gradvek 1.0
 
 GRaph of ADVerse Event Knowledge
 
@@ -58,7 +102,7 @@ To run the application using a Neo4j Desktop database, follow the steps below.  
 * Start Neo4j Desktop.
 * Create a new project if you haven't set one up before.  If you have, skip ahead to start the DBMS.
   * Add a local DBMS to the project.
-  * Set the password to `gradvek`.
+  * Set the password to `gradvek1`.
   * In the DBMS settings (click the ... while hovering over the DBMS):
     * Search for the string "non-local connections".
     * Uncomment the next line that reads `dbms.default_listen_address=0.0.0.0`.
