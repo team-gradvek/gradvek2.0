@@ -43,7 +43,7 @@ When Neo4j Desktop launches, a screen like this will appear with the default exa
 4. Click on Add button and select Local DBMS<br/>
 ![Step 4](./images/Step4.png)
 
-5. Set password to **gradvek** and click on **Create** button<br/>
+5. Set password to **gradvek1** and click on **Create** button<br/>
 
 6. Hover over Graph DBMS and click on Start<br/>
 ![Step 6](./images/Step6.png)
