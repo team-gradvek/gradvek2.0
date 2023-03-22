@@ -14,9 +14,8 @@ services:
 
 
   gradvek:
-    image: davida26/gradvek2.0:latest
+    image: sheelyn/da-crossplatform:latest
     ports:
       - "3000:3000"
       - "8080:8080"
-    build:
-      context: .
+      
