@@ -38,6 +38,7 @@ class EndToEndTests {
 
             options = new ChromeOptions();
             options.addArguments("--no-sandbox");
+            options.addArguments("--remote-allow-origins=*");
             options.setHeadless(true);
 
             setupDone = true;
