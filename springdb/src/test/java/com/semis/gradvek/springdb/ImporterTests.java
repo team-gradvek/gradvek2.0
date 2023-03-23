@@ -22,14 +22,14 @@ public class ImporterTests {
 	
 	@BeforeAll
 	public static void readFile () throws IOException {	
-		Resource r = new ClassPathResource ("targets/part-00000-93626c03-1c1d-49b0-a5d8-9973ee62d900-c000.snappy.parquet");
+		Resource r = new ClassPathResource ("targets/part-00001-7c4d21db-d777-42ee-ae66-67426a0369f1-c000.snappy.parquet");
 		mParquet = ParquetUtils.readResource (r);
 	}
 	@Test
 	public void testImport () {
 		List<Entity> imported = new Importer (new TestDBDriver ()).readEntities (mParquet, EntityType.Target);
 		
-		Assertions.assertEquals (imported.size (), 316);
+		Assertions.assertEquals (imported.size (), 331);
 		imported.forEach (e -> Assertions.assertTrue (e instanceof Target));
 	}
 }
