@@ -17,7 +17,10 @@ public enum EntityType implements Constants {
 	Involves(Involves.class, null),
 	Dataset(Dataset.class, "dataset"),
 	Action(Action.class, null),
-	MousePhenotype(MousePhenotype.class, MOUSE_PHENOTYPE_ID);
+	MousePhenotype(MousePhenotype.class, MOUSE_PHENOTYPE_ID),
+	Reactome(Reactome.class, REACTOME_ID),
+	KnownDrug(KnownDrug.class, KNOWN_DRUG_ID);
+
 
 
 	/**
@@ -91,6 +94,8 @@ public enum EntityType implements Constants {
 			case Gene:
 			case Target:
 			case MousePhenotype:
+			case Reactome:
+			case KnownDrug:
 			case Pathway:
 			case Dataset:
 				ret = "MATCH (n:" + type.toString () + ") RETURN COUNT (n)";

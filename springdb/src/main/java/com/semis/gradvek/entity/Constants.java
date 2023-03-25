@@ -11,4 +11,10 @@ public interface Constants {
 
 	//"mousePhenotypeId is a placeholder for now.
 	public final String MOUSE_PHENOTYPE_ID = "mousePhenotypeId";
+
+	//reactomeId is a placeholder for now.
+	public final String REACTOME_ID = "reactomeId";
+
+	//knownDrugId is a placeholder for now.
+	public final String KNOWN_DRUG_ID = "knownDrugId";
 }

@@ -42,17 +42,19 @@ public class ParquetUtils {
 	}
 	
 	// maps the entity type to the name of the folder where the parquet files for it live
-	private static final Map<EntityType, OpenTargetsSource> mEntityTypeToSource = Map.of (
-			EntityType.Target, new OpenTargetsSource ("targets", "OpenTargets annotations for drug targets"),
-			EntityType.AdverseEvent, new OpenTargetsSource ("fda/significantAdverseDrugReactions", "FAERS annotations for adverse events"),
-			EntityType.Drug, new OpenTargetsSource ("molecule", "OpenTargets annotations for drug molecules"),
-			EntityType.MechanismOfAction, new OpenTargetsSource ("mechanismOfAction", "OpenTargets annotations for mechanisms of action for drug molecules"),
-			EntityType.Action, new OpenTargetsSource ("", "OpenTargets data on drug association with actions on targets"), // gets created with mechanisms
-			EntityType.AssociatedWith, new OpenTargetsSource ("fda/significantAdverseDrugReactions", "FAERS data on association of adverse events with drug molecules"),
-			EntityType.Pathway, new OpenTargetsSource ("", "OpenTargets annotations for pathways"), // gets created with targets
-			EntityType.Participates, new OpenTargetsSource ("targets", "OpenTargets data on participation of drug targets in pathways"),
-			EntityType.MousePhenotype, new OpenTargetsSource ("mousePhenotypes", "OpenTargets data for mousePhenotypes")
-			);
+	private static final Map<EntityType, OpenTargetsSource> mEntityTypeToSource = Map.ofEntries (
+			Map.entry(EntityType.Target, new OpenTargetsSource ("targets", "OpenTargets annotations for drug targets")),
+			Map.entry(EntityType.AdverseEvent, new OpenTargetsSource ("fda/significantAdverseDrugReactions", "FAERS annotations for adverse events")),
+			Map.entry(EntityType.Drug, new OpenTargetsSource ("molecule", "OpenTargets annotations for drug molecules")),
+			Map.entry(EntityType.MechanismOfAction, new OpenTargetsSource ("mechanismOfAction", "OpenTargets annotations for mechanisms of action for drug molecules")),
+			Map.entry(EntityType.Action, new OpenTargetsSource ("", "OpenTargets data on drug association with actions on targets")), // gets created with mechanisms
+			Map.entry(EntityType.AssociatedWith, new OpenTargetsSource ("fda/significantAdverseDrugReactions", "FAERS data on association of adverse events with drug molecules")),
+			Map.entry(EntityType.Pathway, new OpenTargetsSource ("", "OpenTargets annotations for pathways")), // gets created with targets
+			Map.entry(EntityType.Participates, new OpenTargetsSource ("targets", "OpenTargets data on participation of drug targets in pathways")),
+			Map.entry(EntityType.MousePhenotype, new OpenTargetsSource ("mousePhenotypes", "OpenTargets data for mousePhenotypes")),
+			Map.entry(EntityType.KnownDrug, new OpenTargetsSource ("knownDrug", "OpenTargets data for known drugs aggregated")),
+			Map.entry(EntityType.Reactome, new OpenTargetsSource ("reactome", "OpenTargets data for reactome"))
+	);
 
 	/**
 	 * Collects all fields with the specified keys from the supplied data into a map

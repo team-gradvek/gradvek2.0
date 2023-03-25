@@ -35,6 +35,16 @@ public class Node extends CytoscapeEntity {
                     Pair.of(MOUSE_PHENOTYPE_ID, MOUSE_PHENOTYPE_ID),
                     Pair.of("name", "label"),
                     Pair.of("mousePhenotypeId", "mousePhenotypeId")
+            ),
+            "Reactome", List.of(
+                    Pair.of(REACTOME_ID, REACTOME_ID),
+                    Pair.of("name", "label"),
+                    Pair.of("reactomeId", "reactomeId")
+            ),
+            "KnownDrug", List.of(
+                    Pair.of(KNOWN_DRUG_ID, KNOWN_DRUG_ID),
+                    Pair.of("name", "label"),
+                    Pair.of("knownDrugId", "knownDrugId")
             )
     );
 

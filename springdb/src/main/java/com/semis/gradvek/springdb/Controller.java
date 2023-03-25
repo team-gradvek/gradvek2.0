@@ -80,7 +80,9 @@ public class Controller {
 				AssociatedWith,
 				MechanismOfAction,
 				Participates,
-				MousePhenotype
+				MousePhenotype,
+				Reactome,
+				KnownDrug
 		};
 
 		// Create indexes up front for fast merging
