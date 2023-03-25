@@ -108,7 +108,7 @@ clean-local-docker: | clean-frontend clean-backend clean-local-db clean-local-de
 clean-remote-docker: | clean-frontend clean-backend clean-local-db clean-remote-deploy
 
 # Clean all for local and remote docker development in order
-clean: | clean-local clean-local-docker clean-remote-docker
+clean: | clean-frontend clean-backend clean-local-db clean-local-deploy clean-remote-deploy
 
 
 
