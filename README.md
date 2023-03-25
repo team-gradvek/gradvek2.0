@@ -35,9 +35,9 @@ Building and running can all be done through the following make commands
 
 ```make clean-frontend``` will clean the frontend node_modules
 
-```make clean-backend``` will clean the backend target folder
+```make clean-backend``` will clean the backend maven target
 
-```make clean-local-db``` will clean the local database
+```make clean-local-db``` will clean the local database files
 
 ```make clean-local-deploy``` will clean the local docker images
 
