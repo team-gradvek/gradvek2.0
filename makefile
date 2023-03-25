@@ -15,9 +15,22 @@ LOCAL_DOCKER_IMAGE_TAG := gradvek/springdb-docker
 LOCAL_DOCKER_COMPOSE_FILE := docker-compose-local.yml
 DEPLOYED_DOCKER_COMPOSE_FILE := docker-compose.yml
 
+CURRENT_UID := $(shell id -u)
+CURRENT_GID := $(shell id -g)
+
+export CURRENT_UID
+export CURRENT_GID
+
 # Default Target Run all for local docker development
 .PHONY: local-docker
 default: local-docker
+
+#Setup Commands
+
+# Add Data directory for volume mount folder
+setup-volume-folder:
+	$(info Make: Setting up volume mount folder.)
+	@mkdir -p ./data
 
 #BUILD COMMANDS
 
@@ -56,12 +69,12 @@ run-local:
 	@cd $(FRONTEND_DIR) && $(FRONTEND_RUN)
 	
 # Run local gradvek through docker on local host
-run-docker:
+run-docker: setup-volume-folder
 	$(info Make: Running docker image.)
 	@docker-compose -f $(LOCAL_DOCKER_COMPOSE_FILE) up
 
 # Run deployed gradvek through docker on local host
-run-deployed:
+run-deployed: setup-volume-folder
 	$(info Make: Running deployed docker image.)
 	@docker-compose -f $(DEPLOYED_DOCKER_COMPOSE_FILE) up
 

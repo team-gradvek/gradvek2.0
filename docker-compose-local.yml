@@ -4,6 +4,7 @@ services:
 
   neo4j:
     image: neo4j
+    user: "${CURRENT_UID}:${CURRENT_GID}"
     volumes:
       - ./data:/data
      # - ./logs:/logs # Uncomment this to record Neo4j Logging data
