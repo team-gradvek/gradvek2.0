@@ -5,7 +5,7 @@ GRaph of ADVerse Event Knowledge 2.0
 ## Make commands
 Building and running can all be done through the following make commands
 
-# Build Commands
+### Build Commands
 
 ```make build-frontend``` will build the code to run the frontend
 
@@ -13,7 +13,7 @@ Building and running can all be done through the following make commands
 
 ```make build-docker``` will build a local docker image with your local changes to both the front and back end
 
-# Run Commands
+### Run Commands
 
 ```make run-backend``` will run the gradVek backend on your local host
 
@@ -31,7 +31,7 @@ Building and running can all be done through the following make commands
 
 ```make``` the default behaviour is the same as ```make local-docker```
 
-# Clean Commands
+### Clean Commands
 
 ```make clean-frontend``` will clean the frontend node_modules
 
