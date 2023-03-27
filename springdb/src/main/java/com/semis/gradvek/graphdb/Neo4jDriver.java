@@ -19,6 +19,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The abstraction of the access to the Neo4j database, delegating methods to
@@ -38,8 +39,13 @@ public class Neo4jDriver implements DBDriver, Constants {
         String user = env.getProperty("neo4j.user");
         String password = env.getProperty("neo4j.password");
 
+        // Config variable for the driver, adds acquision timeout contol
+        Config config = Config.builder()
+                .withConnectionAcquisitionTimeout(5, TimeUnit.MINUTES)
+                .build();
+
         mUri = uri;
-        mDriver = GraphDatabase.driver(mUri, AuthTokens.basic(user, password));
+        mDriver = GraphDatabase.driver(mUri, AuthTokens.basic(user, password), config);
         mLogger.info("Neo4jDriver initialized with URL " + getUri());
     }
 

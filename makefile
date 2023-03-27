@@ -15,9 +15,24 @@ LOCAL_DOCKER_IMAGE_TAG := gradvek/springdb-docker
 LOCAL_DOCKER_COMPOSE_FILE := docker-compose-local.yml
 DEPLOYED_DOCKER_COMPOSE_FILE := docker-compose.yml
 
+CURRENT_UID := $(shell id -u)
+CURRENT_GID := $(shell id -g)
+
+export CURRENT_UID
+export CURRENT_GID
+
 # Default Target Run all for local docker development
 .PHONY: local-docker
 default: local-docker
+
+#Setup Commands
+
+# Add Data directory for volume mount folder
+setup-volume-folder:
+	$(info Make: Setting up volume mount folder.)
+	@mkdir -p ./data
+
+#BUILD COMMANDS
 
 # Build Frontend with npm install in springdb/frontend folder
 build-frontend:
@@ -33,6 +48,8 @@ build-backend:
 build-docker:
 	$(info Make: Building docker image.)
 	@docker build -t $(LOCAL_DOCKER_IMAGE_TAG) .
+
+#RUN COMMANDS
 
 # Run local gradvek backend on local host
 run-backend:
@@ -50,13 +67,14 @@ run-local:
 	$(info Make: This requires neo4j running locally.)
 	@cd $(BACKEND_DIR) && $(BACKEND_RUN) &
 	@cd $(FRONTEND_DIR) && $(FRONTEND_RUN)
+	
 # Run local gradvek through docker on local host
-run-docker:
+run-docker: setup-volume-folder
 	$(info Make: Running docker image.)
 	@docker-compose -f $(LOCAL_DOCKER_COMPOSE_FILE) up
 
 # Run deployed gradvek through docker on local host
-run-deployed:
+run-deployed: setup-volume-folder
 	$(info Make: Running deployed docker image.)
 	@docker-compose -f $(DEPLOYED_DOCKER_COMPOSE_FILE) up
 
@@ -65,3 +83,45 @@ local: | build-frontend build-backend run-local
 
 # Run all for local docker development in order
 local-docker: | build-frontend build-backend build-docker run-docker
+
+#CLEAN COMMANDS
+
+# Clean Frontend with npm install in springdb/frontend folder
+clean-frontend:
+	$(info Make: Cleaning frontend.)
+	@cd $(FRONTEND_DIR) && rm -rf node_modules
+
+# Clean Backend with maven install in springdb folder
+clean-backend:
+	$(info Make: Cleaning backend.)
+	@cd $(BACKEND_DIR) && mvn clean
+
+# Clean local database
+clean-local-db:
+	$(info Make: Cleaning local database.)
+	@rm -rf ./data
+
+# Clean images from local docker compose
+clean-local-deploy:
+	$(info Make: Cleaning docker images.)
+	@docker-compose -f $(LOCAL_DOCKER_COMPOSE_FILE) down
+
+# Clean images from remote docker compose
+clean-remote-deploy:
+	$(info Make: Cleaning deployed docker images.)
+	@docker-compose -f $(DEPLOYED_DOCKER_COMPOSE_FILE) down
+
+# Clean all for local development in order
+clean-local: | clean-frontend clean-backend
+
+# Clean all for local docker development in order
+clean-local-docker: | clean-frontend clean-backend clean-local-db clean-local-deploy
+
+# Clean all for remote docker development in order
+clean-remote-docker: | clean-frontend clean-backend clean-local-db clean-remote-deploy
+
+# Clean all for local and remote docker development in order
+clean: | clean-frontend clean-backend clean-local-db clean-local-deploy clean-remote-deploy
+
+
+

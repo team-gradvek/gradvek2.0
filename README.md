@@ -5,11 +5,15 @@ GRaph of ADVerse Event Knowledge 2.0
 ## Make commands
 Building and running can all be done through the following make commands
 
+### Build Commands
+
 ```make build-frontend``` will build the code to run the frontend
 
 ```make build-backend``` will test and build the code to run the backend
 
 ```make build-docker``` will build a local docker image with your local changes to both the front and back end
+
+### Run Commands
 
 ```make run-backend``` will run the gradVek backend on your local host
 
@@ -26,6 +30,26 @@ Building and running can all be done through the following make commands
 ```make local-docker``` will build and run the gradVek in docker and neo4j image on your local host with local changes
 
 ```make``` the default behaviour is the same as ```make local-docker```
+
+### Clean Commands
+
+```make clean-frontend``` will clean the frontend node_modules
+
+```make clean-backend``` will clean the backend maven target
+
+```make clean-local-db``` will clean the local database files
+
+```make clean-local-deploy``` will clean the local docker images
+
+```make clean-remote-deploy``` will clean the remote docker images
+
+```make clean-local``` will clean the frontend and backend
+
+```make clean-local-docker``` will clean the frontend, backend, local database, and local docker images
+
+```make clean-remote-docker``` will clean the frontend, backend, local database, and remote docker images
+
+```make clean``` will clean the frontend, backend, local database, local docker images, and remote docker images
 
 ## Caution
 Any changes that alter communication with the database, such as passwords, will require deleting the data folder and rebuilding the image.
